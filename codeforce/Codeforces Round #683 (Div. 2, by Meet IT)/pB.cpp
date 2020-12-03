@@ -8,7 +8,6 @@ using ll = long long;
 #define S second
 #define ALL(x) x.begin(),x.end()
 #define vi vector<int>
-constexpr ll mxN = 1e7;
 constexpr ll MOD = 1e9+7;
 /*
 ll pow_mod(int n, int p){
@@ -21,13 +20,40 @@ ll pow_mod(int n, int p){
 	return rESULt;
 }
 */
+
+constexpr int mxN = 15;
+int G[mxN][mxN];
+int n,m;
+
+
 void solver(){
-	int n;
-	cin >> n;
+	cin >> n >> m;
+	bool ok = 0;
+	int num = INT_MAX;
+	int cnt = 0;
 	for(int i = 0; i<n; i++){
-		cout << "2 ";
+		for(int j = 0; j<m; j++){
+			cin >> G[i][j];
+			if(G[i][j]<0)cnt++;
+			num = min(abs(G[i][j]),num);
+		}
 	}
-	cout << endl;
+	int ans = 0;
+	if(cnt%2){
+		for(int i = 0; i<n; i++){
+			for(int j = 0; j<m; j++){
+				ans+=abs(G[i][j]);
+			}
+		}
+		cout << ans-2*num << endl;
+	}else{
+		for(int i = 0; i<n; i++){
+			for(int j = 0; j<m; j++){
+				ans+=abs(G[i][j]);
+			}
+		}
+		cout << ans << endl;
+	}
 }
 
 int main(){
