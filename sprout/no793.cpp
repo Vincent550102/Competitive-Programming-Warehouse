@@ -23,6 +23,7 @@ int main(){
 		return 0;
 	}
 	
+	
 	for(int i = 0; i<n; i++){
 		if(!pw.count(v[i])){
 			pw[v[i]]=rand()%p;

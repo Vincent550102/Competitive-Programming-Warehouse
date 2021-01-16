@@ -17,7 +17,7 @@ using ll = long long;
 	cout << x << " ";\
 }cout << '\n';
 
-constexpr ll mxN = 1e7;
+constexpr ll mxN = 1e4;
 constexpr ll MOD = 1e9+7;
 
 /*
@@ -32,16 +32,30 @@ ll pow_mod(int n, int p){
 }
 */
 
-
-
-void solver(){
-	int x,y;cin >> x >> y;
-	cout << x-1 << " " << y;
-	cout << endl;
-	
-}
-
-int main(){	
+ll G[mxN][mxN];
+int main(){
 	io_op
-	int T;cin >> T;while(T--){ solver(); }
+	int n,m;
+	cin >> n >> m;
+	for(int i = 0; i<n; i++){
+		for(int j = 0; j<m; j++){
+			cin >> G[i][j];
+		}
+	}
+	bool ok = 1;
+	for(int i = 0; i<n; i++){
+		ll cnt = 0;
+		for(int j = 0; j<m; j++){
+			cnt+=G[i][j];
+		}
+		if(cnt)ok=0;
+	}
+	for(int j = 0; j<m; j++){
+		ll cnt = 0;
+		for(int i = 0; i<n; i++){
+			cnt+=G[i][j];
+		}
+		if(cnt)ok=0;
+	}
+	cout << (ok?"Yes":"No") << endl;
 }

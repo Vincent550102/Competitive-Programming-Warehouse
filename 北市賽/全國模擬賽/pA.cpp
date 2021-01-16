@@ -17,7 +17,7 @@ using ll = long long;
 	cout << x << " ";\
 }cout << '\n';
 
-constexpr ll mxN = 1e7;
+constexpr ll mxN = 1e5+5;
 constexpr ll MOD = 1e9+7;
 
 /*
@@ -32,16 +32,22 @@ ll pow_mod(int n, int p){
 }
 */
 
-
-
-void solver(){
-	int x,y;cin >> x >> y;
-	cout << x-1 << " " << y;
-	cout << endl;
-	
-}
-
-int main(){	
+int main(){
 	io_op
-	int T;cin >> T;while(T--){ solver(); }
+	int n;
+	int a[mxN];
+	int b[mxN];
+	cin >> n;
+	for(int i = 0; i<n; i++){
+		cin >> a[i] >> b[i];
+	}
+	int ans = 0;
+	for(int i = 0; i<n; i++){
+		for(int j = i+1; j<n; j++){
+			if(!((a[i]+a[j])%2)&&!((b[i]+b[j])%2)){
+				ans++;
+			}
+		}
+	}
+	cout << ans << endl;
 }

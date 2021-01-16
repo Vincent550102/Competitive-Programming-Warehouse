@@ -1,3 +1,5 @@
+#pragma GCC optimize("O3,unroll-loops")
+#pragma loop_opt(on)
 #include<bits/stdc++.h>
 #define io_op ios_base::sync_with_stdio(0);cin.tie(0);
 using namespace std;
@@ -12,12 +14,14 @@ using ll = long long;
 #define Vl vector<ll>
 #define Pb push_back
 #define Eb emplace_back
+#define endl '\n'
+#define _ << " " <<
 
 #define coutv(v) for(auto x:v){\
 	cout << x << " ";\
 }cout << '\n';
 
-constexpr ll mxN = 1e7;
+constexpr ll mxN = 1e4;
 constexpr ll MOD = 1e9+7;
 
 /*
@@ -31,17 +35,26 @@ ll pow_mod(int n, int p){
 	return rESULt;
 }
 */
-
-
-
+ 
 void solver(){
-	int x,y;cin >> x >> y;
-	cout << x-1 << " " << y;
+	int n;
+	cin >> n;
+	Vl d(n,0);
+	ll ans = 0;
+	for(int i = 0; i<n; i++){
+		ll tmp;cin >> tmp;
+		if(i+tmp>=n)ans = max(d[i]+tmp,ans);
+		else{
+			d[i+tmp]=max(d[i+tmp],d[i]+tmp);
+		}
+	}
+	for(ll x:d)ans = max(x,ans);
+//	for(ll x:d)cout << x << " ";
 	cout << endl;
-	
+	cout << ans << endl;
 }
 
-int main(){	
+int main(){
 	io_op
-	int T;cin >> T;while(T--){ solver(); }
+	int t;cin >> t;while(t--){ solver(); }
 }

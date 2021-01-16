@@ -31,14 +31,28 @@ ll pow_mod(int n, int p){
 	return rESULt;
 }
 */
-
-
+int n,x;
+int get_first(Vi v){
+	for(int i = 0; i<n; i++){
+		if(v[i]>x)return i;
+	}
+	return -1;
+}
 
 void solver(){
-	int x,y;cin >> x >> y;
-	cout << x-1 << " " << y;
-	cout << endl;
-	
+	cin >> n >> x;
+	vector<int> v(n);
+	for(int i = 0; i<n; i++){
+		cin >> v[i];
+	}
+	int ans = 0;
+	while(!is_sorted(All(v))){
+		int index = get_first(v);
+		if(!(index+1)) break;
+		swap(v[index],x);
+		ans++;
+	}
+	cout << (is_sorted(All(v))?ans:-1) << endl;
 }
 
 int main(){	

@@ -1,3 +1,5 @@
+#pragma GCC optimize("O3,unroll-loops")
+#pragma loop_opt(on)
 #include<bits/stdc++.h>
 #define io_op ios_base::sync_with_stdio(0);cin.tie(0);
 using namespace std;
@@ -12,12 +14,14 @@ using ll = long long;
 #define Vl vector<ll>
 #define Pb push_back
 #define Eb emplace_back
+#define endl '\n'
+#define _ << " " << 
 
 #define coutv(v) for(auto x:v){\
 	cout << x << " ";\
 }cout << '\n';
 
-constexpr ll mxN = 1e7;
+constexpr ll mxN = 1e4;
 constexpr ll MOD = 1e9+7;
 
 /*
@@ -32,16 +36,35 @@ ll pow_mod(int n, int p){
 }
 */
 
-
-
 void solver(){
-	int x,y;cin >> x >> y;
-	cout << x-1 << " " << y;
-	cout << endl;
-	
+	int n;
+	cin >> n;
+	Vi v(n);
+	for(int i = 0; i<n; i++){
+		cin >> v[i];
+	}
+	for(int i = 1; i<=n; i++){
+		int ans = 0;
+		ll sum = 0;
+		for(int j = 0; j<i; j++){
+			sum+=v[j];
+		}
+		int cnt = 0;
+		for(int j = i; j<n; j++){
+			cnt+=v[j];
+			if(cnt>sum)break;
+			if(cnt==sum)cnt=0;
+			else ans++;
+		}
+		if(!cnt){
+			ans+=i-1;
+			cout << ans << endl;
+			return;
+		}
+	}
 }
 
-int main(){	
+int main(){
 	io_op
-	int T;cin >> T;while(T--){ solver(); }
+	int t;cin >> t;while(t--){ solver(); }
 }
