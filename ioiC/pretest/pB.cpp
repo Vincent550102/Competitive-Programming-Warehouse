@@ -1,12 +1,23 @@
 #include<bits/stdc++.h>
 using namespace std;
+
+
+using ll = long long;
+using pii = pair<int,int>
+#define F first
+#define S second
+#define endl '\n'
+
+constexpr int mxN = 1e5+5;
+
 int n;
 vector<int> v;
 struct Node{
 	int val,tag;
+	int cnt;
 	Node *lc ,*rc;
 	Node(){
-		val = tag = 0;
+		cnt = val = tag = 0;
 		lc = rc = NULL;
 	}
 	void pull(){
@@ -29,7 +40,7 @@ Node *build(int L,int R){
 
 void push(Node *node,int L,int R){
 	if(!node->tag)return;
-	if(L!=R){//check not leaf
+	if(L!=R){ //check not leaf
 		int mid = (L+R)>>1;
 		node->lc->tag += node->tag;
 		node->rc->tag += node->tag;
@@ -62,12 +73,26 @@ int query(Node *node,int L,int R, int ql,int qr){
 }
 
 int main(){
+	// n
+	// l r u d
 	cin >> n;
-	v.resize(n+1);
-	for(int i = 1; i<=n; i++){
-		cin >> v[i];
-	}
+	//vector<l,{{u,d},cnt}>
+	
 	Node *seg = build(1,n);
-	modify(seg,1,n,1,3,5);
-	cout << query(seg,1,n,1,3) << endl;
+	
+	vector<pair<int,pair<pair<int,int>,int > > > G;
+	for(int i = 0; i<n; i++){
+		int l,r,u,d;
+		cin >> l >> r >> u >> d;
+		G.emplace_back({l,{{u,d},1}});
+		G.emplace_back({r,{{u,d},-1}});
+	}
+	int prev = 0;
+	int ans = 0; //query change to check number of not zero
+	for(auto E:G){
+		ans += query(seg,1,n,1,n)*(pre-E.F);
+		modify(seg , 1 , n , E.S.F.F , E.S.F.S , e.S.S);
+	}
+	cout << ans <<endl;
+	
 } 
