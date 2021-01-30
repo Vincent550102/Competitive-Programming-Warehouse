@@ -1,0 +1,1 @@
+dp[i][j] = max(dp[i][j-w[i]]+v[i],dp[i-1][j]);

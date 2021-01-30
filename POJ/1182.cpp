@@ -26,7 +26,7 @@ int main(){
 //	DSU dsu;
 //	freopen("in.txt","r",stdin);
 	int n,k;cin >> n >> k;
-	dsu.init(3*n);
+	dsu.init(4*n);
 	int ans = 0;
 	while(k--){
 		int d,x,y;
