@@ -1,7 +1,7 @@
 #include<bits/stdc++.h>
 using namespace std;
 vector<int> build_fail(const string &a){
-	vector<int> f{0,0};
+	vector<int> f{-1,0};
 	int u = 0;
 	for(int i = 1; i<(int)a.size(); i++){
 		while(u&&a[i]!=a[u])u=f[u];

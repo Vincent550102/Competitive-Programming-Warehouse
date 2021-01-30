@@ -75,15 +75,19 @@ struct Dinic {
     }
 }Flow;
 
-signed main(){
+signed main() {
 	ios_base::sync_with_stdio(false);
 	cin.tie(0);
-	int n,m,s,t;cin >> n >> m >> s >> t;
-	Flow.init(n,s,t);
-	while(m--){
-		int u,v,c;cin >> u >> v >> c;
-		Flow.add_Edge(u,v,c);
+	int cnt = 0;
+	int n; while(cin >> n&&n) {
+		int s,t,m; cin >> s >> t >> m;
+		Flow.init(n, s, t);
+		while(m--) {
+			int u,v,c; cin >> u >> v >> c;
+			Flow.add_Edge(u, v, c);
+		}
+		cout << "Network " << ++cnt << endl << "The bandwidth is " <<Flow.flow() <<"." << endl;
 	}
-	cout << Flow.flow() << endl;
+	
 	
 }
