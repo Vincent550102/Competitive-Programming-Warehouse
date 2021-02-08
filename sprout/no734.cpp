@@ -35,7 +35,6 @@ int main(){
 		auto u = pq.top();
 		pq.pop();
 		if(is_visit[u.second])continue;
-//		cout << u.second << " ";
 		ans+=u.first;
 		for(auto x:G[u.second]){
 			if(!is_visit[x.second]){

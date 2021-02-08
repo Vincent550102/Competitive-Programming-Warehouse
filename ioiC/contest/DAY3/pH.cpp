@@ -1,7 +1,7 @@
 #include<bits/stdc++.h>
 using namespace std;
 
-constexpr int mxN = 1e5;
+constexpr int mxN = 1e6+5;
 constexpr int inf = 1e9+7;
 int dp[mxN][2];
 
@@ -29,15 +29,15 @@ int main(){
 	
 	for(int i = k; i<n; i++) {
 		dp[i][0] = dp[i-k][0]+v[i]-v[i-k+1];
-		if(remain)dp[i][1] = dp[i-remain][0]+v[i]-v[i-remain+1];
+		if(remain)dp[i][1] = min(dp[i-remain][0]+v[i]-v[i-remain+1],dp[i-k][1]+v[i]-v[i-k+1]);
 	}
 	
-	for(int k = 0; k<2; k++) {
-		for(int i = 0; i<n; i++) {
-			cout << dp[i][k] << " ";
-		}
-		cout << endl;
-	}
+//	for(int k = 0; k<2; k++) {
+//		for(int i = 0; i<n; i++) {
+//			cout << dp[i][k] << " ";
+//		}
+//		cout << endl;
+//	}
 	cout << (remain?dp[n-1][1]:dp[n-1][0]) << endl;
 	
 }

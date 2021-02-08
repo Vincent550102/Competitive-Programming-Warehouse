@@ -1,0 +1,2 @@
+The answer is incorrect because the time complexity is big O n square.
+We know that the bottleneck of computation speed is the physical limitation.

@@ -28,15 +28,15 @@ int main(){
 //	}
 	string a;
 	while(getline(cin,a)){
-		vector<int> f = build_fail(a);
-		int now = -1;
+		vector<int> f = (a!=""?build_fail(a):vector<int>{});
 		vector<int> cha;
-		for(int i = 0; i<a.size(); i++){
+		int now = -1;
+		
+		if(a!="") for(int i = 0; i<a.size(); i++){
 			while(now!=-1&&er[now+1]!=a[i])now = f[now];
 			if(er[now+1]==a[i])now++;
 			if(now+1 == er.size()){
 				cha.push_back(i - er.size()+1);
-				
 				now = f[now];
 			}
 		}
@@ -47,7 +47,7 @@ int main(){
 		string cur = "";
 		bool start = true;
 		bool jump = false;
-		for(int i = 0; i<a.size(); i++){
+		for(int i = 0; i<(int)a.size(); i++){
 			while(start&&a[i]==' '){
 				i++;
 			}
@@ -63,7 +63,7 @@ int main(){
 				cur = "";
 			}else cur+=a[i];
 		}
+		if(cur!="")ans+=cur;
 		cout << ans << endl;
 	}
-	
-} 
+}
