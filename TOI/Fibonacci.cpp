@@ -48,12 +48,12 @@ int main(){
 	}
 	cin >> x1 >> x2 >> MAT.data[0][1] >> MAT.data[1][1] >> n;
 	MAT = matpow(MAT,n-2);
-	for(int i = 0; i<2; i++){
-		for(int j = 0; j<2; j++){
-			cout << MAT.data[i][j] << " ";
-		}
-		cout << endl;
-	}
+//	for(int i = 0; i<2; i++){
+//		for(int j = 0; j<2; j++){
+//			cout << MAT.data[i][j] << " ";
+//		}
+//		cout << endl;
+//	}
 	ll ans = (x1*MAT.data[0][1]%MOD+x2*MAT.data[1][1]%MOD)%MOD;
 	cout << ans << endl;
 	
