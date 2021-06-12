@@ -5,7 +5,7 @@ int main(){
 	int t;cin >> t;while(t--){
 		int c;
 		cin >> c;
-		MP[c]++;
+	MP[c]++;
 	}
 	for(auto x:MP){
 		cout << x.second;
